@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedScope 设置</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 标签页 -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="filter">
+                <span class="tab-icon">▼</span>
+                按条件筛选
+            </button>
+            <button class="tab-btn" data-tab="sort">
+                <span class="tab-icon">⇅</span>
+                按分数排序
+            </button>
+        </div>
+
+        <!-- 筛选标签页 -->
+        <div class="tab-content active" id="filter-tab">
+            <div class="form-group">
+                <label for="minIF">最小值：</label>
+                <input type="number" id="minIF" min="0" max="200" step="0.1" value="0" class="number-input">
+            </div>
+
+            <div class="form-group">
+                <label for="maxIF">最大值：</label>
+                <input type="number" id="maxIF" min="0" max="200" step="0.1" value="200" class="number-input">
+            </div>
+
+            <div class="form-group">
+                <div class="quartile-checkboxes">
+                    <label class="quartile-check">
+                        <input type="checkbox" value="Q1" checked>
+                        <span>Q1</span>
+                    </label>
+                    <label class="quartile-check">
+                        <input type="checkbox" value="Q2" checked>
+                        <span>Q2</span>
+                    </label>
+                    <label class="quartile-check">
+                        <input type="checkbox" value="Q3" checked>
+                        <span>Q3</span>
+                    </label>
+                    <label class="quartile-check">
+                        <input type="checkbox" value="Q4" checked>
+                        <span>Q4</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="always-on-check">
+                    <input type="checkbox" id="alwaysOn" checked>
+                    <span>始终开启筛选器</span>
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button id="applyFilter" class="btn-primary">应用筛选器</button>
+                <button id="closeFilter" class="btn-secondary">关闭筛选器</button>
+            </div>
+
+            <div class="help-link">
+                <a href="#" id="showHelp">需要帮助？</a>
+            </div>
+
+            <!-- 快速筛选预设 -->
+            <div class="quick-presets">
+                <div class="preset-title">快速筛选</div>
+                <div class="preset-buttons">
+                    <button class="preset-btn" data-preset="top">顶级 (IF≥10, Q1)</button>
+                    <button class="preset-btn" data-preset="high">高分 (IF≥5, Q1-Q2)</button>
+                    <button class="preset-btn" data-preset="medium">中等 (IF≥3)</button>
+                    <button class="preset-btn" data-preset="all">显示全部</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 排序标签页 -->
+        <div class="tab-content" id="sort-tab">
+            <div class="form-group">
+                <label>排序方式：</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="default">默认顺序（不排序）</option>
+                    <option value="if-desc">影响因子：高到低</option>
+                    <option value="if-asc">影响因子：低到高</option>
+                    <option value="quartile">分区：Q1 → Q4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="always-on-check">
+                    <input type="checkbox" id="sortEnabled">
+                    <span>启用自动排序</span>
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button id="applySort" class="btn-primary">应用排序</button>
+                <button id="resetSort" class="btn-secondary">恢复默认</button>
+            </div>
+
+            <div class="sort-info">
+                <p>💡 提示：</p>
+                <p>• 排序功能会重新排列搜索结果</p>
+                <p>• 可以先筛选再排序获得更好效果</p>
+                <p>• 恢复默认会刷新页面</p>
+            </div>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="stats-bar">
+            <span>期刊总数: <strong>20,449</strong></span>
+            <span>匹配: <strong id="matchCount">-</strong></span>
+        </div>
+
+        <div class="footer">
+            <span>MedScope v1.0</span>
+            <span>数据: JCR 2024</span>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
+

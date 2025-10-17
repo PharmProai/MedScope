@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "MedScope - PubMed 期刊影响因子查看器",
+  "version": "1.0.0",
+  "description": "在 PubMed 上显示期刊的影响因子、分区等信息，支持筛选功能",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://pubmed.ncbi.nlm.nih.gov/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://pubmed.ncbi.nlm.nih.gov/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["journal_data.json"],
+      "matches": ["https://pubmed.ncbi.nlm.nih.gov/*"]
+    }
+  ]
+}
+

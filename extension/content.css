@@ -1,0 +1,505 @@
+/* MedScope 样式文件 */
+
+/* 筛选面板 - 固定在页面右侧 */
+.medscope-filter-panel {
+    position: fixed !important;
+    top: 80px !important;
+    right: 20px !important;
+    width: 280px !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    max-height: calc(100vh - 100px) !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 收起状态 */
+.medscope-filter-panel.collapsed {
+    width: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.medscope-filter-panel.collapsed .medscope-panel-content {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* 收起/展开按钮 */
+.medscope-toggle-btn {
+    position: fixed !important;
+    top: 50% !important;
+    right: 290px !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    height: 70px !important;
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    border: 2px solid white !important;
+    border-right: none !important;
+    border-radius: 12px 0 0 12px !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10002 !important;
+}
+
+.medscope-toggle-btn:hover {
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%) !important;
+    box-shadow: -6px 0 15px rgba(0, 0, 0, 0.35) !important;
+    right: 288px !important;
+}
+
+/* 收起状态时按钮在屏幕右侧边缘 */
+body:has(.medscope-filter-panel.collapsed) .medscope-toggle-btn {
+    right: -10px !important;
+    border-radius: 12px 0 0 12px !important;
+}
+
+/* 如果浏览器不支持 :has()，使用类名 */
+.medscope-toggle-btn.panel-collapsed {
+    right: -10px !important;
+    border-radius: 12px 0 0 12px !important;
+}
+
+.medscope-panel-content {
+    width: 100% !important;
+    overflow-y: auto !important;
+    max-height: calc(100vh - 100px) !important;
+}
+
+/* 标签页 */
+.medscope-tabs {
+    display: flex !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    background: white !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.medscope-tab-btn {
+    flex: 1 !important;
+    padding: 12px 8px !important;
+    border: none !important;
+    background: white !important;
+    color: #666 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+}
+
+.medscope-tab-btn:hover {
+    background: #f5f5f5 !important;
+}
+
+.medscope-tab-btn.active {
+    color: #1976d2 !important;
+    background: #e3f2fd !important;
+    border-bottom: 2px solid #1976d2 !important;
+}
+
+.medscope-tab-icon {
+    font-size: 14px !important;
+}
+
+/* 标签页内容 */
+.medscope-tab-content {
+    display: none !important;
+    padding: 16px !important;
+}
+
+.medscope-tab-content.active {
+    display: block !important;
+}
+
+/* 表单组 */
+.medscope-form-group {
+    margin-bottom: 16px !important;
+}
+
+.medscope-form-group label {
+    display: block !important;
+    margin-bottom: 6px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #555 !important;
+}
+
+/* 数字输入框 */
+.medscope-number-input {
+    width: 100% !important;
+    padding: 8px 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    box-sizing: border-box !important;
+}
+
+.medscope-number-input:focus {
+    outline: none !important;
+    border-color: #1976d2 !important;
+}
+
+/* 下拉选择 */
+.medscope-select {
+    width: 100% !important;
+    padding: 8px 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    background: white !important;
+    cursor: pointer !important;
+}
+
+/* 分区复选框网格 */
+.medscope-quartile-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+}
+
+/* 复选框 */
+.medscope-checkbox {
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    font-size: 13px !important;
+    background: white !important;
+}
+
+.medscope-checkbox:hover {
+    border-color: #1976d2 !important;
+    background: #f5f9ff !important;
+}
+
+/* 选中状态 */
+.medscope-checkbox:has(input[type="checkbox"]:checked) {
+    border-color: #1976d2 !important;
+    background: #e3f2fd !important;
+}
+
+.medscope-checkbox input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 6px !important;
+    cursor: pointer !important;
+    accent-color: #1976d2 !important;
+}
+
+/* 按钮组 */
+.medscope-button-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+}
+
+.medscope-btn-primary {
+    padding: 10px 16px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    background: #1976d2 !important;
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+}
+
+.medscope-btn-primary:hover {
+    background: #1565c0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+.medscope-btn-primary:active {
+    transform: translateY(0) !important;
+}
+
+/* 成功状态 */
+.medscope-btn-primary.success {
+    background: #4caf50 !important;
+    animation: successPulse 0.5s ease !important;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.medscope-btn-secondary {
+    padding: 10px 16px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    background: white !important;
+    color: #666 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+}
+
+.medscope-btn-secondary:hover {
+    background: #f5f5f5 !important;
+    border-color: #999 !important;
+}
+
+.medscope-btn-secondary:active {
+    background: #e0e0e0 !important;
+}
+
+/* 成功状态（也适用于次要按钮）*/
+.medscope-btn-secondary.success {
+    background: #4caf50 !important;
+    color: white !important;
+    border-color: #4caf50 !important;
+    animation: successPulse 0.5s ease !important;
+}
+
+/* 统计信息 */
+.medscope-stats {
+    margin-top: 12px !important;
+    padding: 10px !important;
+    background: #f5f9ff !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    color: #666 !important;
+}
+
+.medscope-stats span {
+    font-weight: bold !important;
+    color: #1976d2 !important;
+}
+
+/* 提示框 */
+.medscope-info-box {
+    margin-top: 12px !important;
+    padding: 10px !important;
+    background: #f5f9ff !important;
+    border-left: 3px solid #1976d2 !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    color: #666 !important;
+    line-height: 1.5 !important;
+}
+
+.medscope-info-box p {
+    margin: 4px 0 !important;
+}
+
+.medscope-info-box strong {
+    color: #1976d2 !important;
+}
+
+/* 帮助文本 */
+.medscope-help-text {
+    font-size: 11px !important;
+    color: #999 !important;
+    margin-top: 4px !important;
+    line-height: 1.3 !important;
+}
+
+/* 隐藏被筛选的文章（包括复选框和序号） */
+/* JavaScript 使用 dataset.medscopeHidden，对应 data-medscope-hidden 属性 */
+*[data-medscope-hidden="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    opacity: 0 !important;
+}
+
+/* 确保 PubMed 的文章容器完全隐藏 */
+article.full-docsum[data-medscope-hidden="true"],
+.docsum-wrap[data-medscope-hidden="true"],
+article[data-medscope-hidden="true"],
+.rprt[data-medscope-hidden="true"],
+div[data-medscope-hidden="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 额外确保包含隐藏文章的父容器也不显示 */
+article.full-docsum:has([data-medscope-hidden="true"]) {
+    display: none !important;
+}
+
+.medscope-badge {
+    display: inline-flex !important;
+    gap: 6px !important;
+    margin-right: 8px !important;
+    margin-bottom: 4px !important;
+    flex-wrap: wrap !important;
+    vertical-align: middle !important;
+}
+
+.medscope-badge > span {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+/* 影响因子标签 */
+.medscope-if {
+    color: white;
+    font-weight: bold;
+}
+
+.medscope-if.if-high {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.medscope-if.if-medium {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 2px 4px rgba(245, 87, 108, 0.3);
+}
+
+.medscope-if.if-low {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 2px 4px rgba(79, 172, 254, 0.3);
+}
+
+/* 分区标签 */
+.medscope-quartile {
+    color: white;
+    font-weight: bold;
+}
+
+.medscope-quartile.q1 {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    box-shadow: 0 2px 4px rgba(250, 112, 154, 0.3);
+}
+
+.medscope-quartile.q2 {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    box-shadow: 0 2px 4px rgba(48, 207, 208, 0.3);
+}
+
+.medscope-quartile.q3 {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    box-shadow: 0 2px 4px rgba(168, 237, 234, 0.3);
+}
+
+.medscope-quartile.q4 {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+    color: #333;
+    box-shadow: 0 2px 4px rgba(210, 153, 194, 0.3);
+}
+
+/* 其他信息标签 */
+.medscope-info {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+/* 详情页面的期刊信息卡片 */
+.medscope-detail-badge {
+    margin-top: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    color: white;
+}
+
+.medscope-detail-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.medscope-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.medscope-detail-row .label {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.medscope-detail-row .value {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.medscope-detail-row .value.quartile-q1 {
+    background: #fa709a;
+}
+
+.medscope-detail-row .value.quartile-q2 {
+    background: #30cfd0;
+}
+
+.medscope-detail-row .value.quartile-q3 {
+    background: #a8edea;
+    color: #333;
+}
+
+.medscope-detail-row .value.quartile-q4 {
+    background: #d299c2;
+    color: #333;
+}
+
+/* 鼠标悬停效果 */
+.medscope-badge > span:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .medscope-badge {
+        font-size: 11px;
+    }
+    
+    .medscope-detail-badge {
+        padding: 12px;
+    }
+    
+    .medscope-detail-row {
+        font-size: 13px;
+    }
+}
+
